@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ReactElement } from 'react';
 import ChevronRight from './icons/ChevronRight';
 import ReactIcon from './icons/ReactIcon';
@@ -17,10 +18,14 @@ const LatestArticles = ({ articles }: ILatestArticlesProps): ReactElement => {
   return (
     <section className='mt-16'>
       <div className='flex justify-between items-center mb-8'>
-        <p className='text-2xl font-medium'>Latest Articles</p>
+        <h1 className='text-2xl font-medium'>Latest Articles</h1>
         <div className='flex items-center gap-2'>
-          <p>All articles</p>
-          <ChevronRight />
+          <Link href='/blog' passHref>
+            <div className='flex gap-x-2 items-center cursor-pointer hover:underline'>
+              <p>All articles</p>
+              <ChevronRight />
+            </div>
+          </Link>
         </div>
       </div>
       <div>

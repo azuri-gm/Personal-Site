@@ -10,9 +10,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <meta name='description' content='Personal site built with Next.js' />
       </Head>
       <div className='w-screen mx-auto bg-dark-blue text-custom-grey font-jost'>
-        <div className='w-3/5 mx-auto p-4 flex flex-col h-screen'>
+        <div className='sm:w-3/5 w-4/5 mx-auto p-4 flex flex-col h-screen max-h-screen'>
           <NavBar />
-          <div className='flex-grow p-4'>{children}</div>
+          <div className='flex-grow p-4 overflow-y-scroll'>{children}</div>
           <Footer />
         </div>
       </div>

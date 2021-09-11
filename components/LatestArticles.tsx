@@ -21,7 +21,7 @@ const LatestArticles = ({ articles }: ILatestArticlesProps): ReactElement => {
         <h1 className='text-2xl font-medium'>Latest Articles</h1>
         <div className='flex items-center gap-2'>
           <Link href='/blog' passHref>
-            <div className='flex gap-x-2 items-center cursor-pointer hover:underline'>
+            <div className='flex gap-x-2 items-center cursor-pointer p-2 hover:bg-filler-blue rounded'>
               <p>All articles</p>
               <ChevronRight />
             </div>

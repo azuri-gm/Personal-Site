@@ -27,15 +27,15 @@ const links: Link[] = [
 
 const NavBar = () => {
   return (
-    <div className='flex justify-between items-center mb-4 p-4'>
-      <div className='flex'>
+    <div className='flex sm:flex-row flex-col justify-between items-center mb-4 p-4'>
+      <div className='flex mb-2 sm:mb-0'>
         <Heart />
         <p>Azuri Gaytan</p>
       </div>
       <nav>
         <ul className='flex gap-x-2'>
           {links.map(({ name, path }, index) => (
-            <li key={index}>
+            <li key={index} className='p-2 hover:bg-filler-blue rounded'>
               <Link href={path}>
                 <a>{name}</a>
               </Link>

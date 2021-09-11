@@ -18,7 +18,7 @@ const blog = ({ posts }: IBlogArticles) => {
 
 export default blog;
 
-export const getStaticProps: GetStaticProps<ILatestBlogArticles> = async () => {
+export const getStaticProps: GetStaticProps<any> = async () => {
   const response = await fetchPosts();
   const posts = response.map((blog) => blog.fields);
 

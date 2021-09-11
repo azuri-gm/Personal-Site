@@ -19,7 +19,7 @@ const Home = ({ posts }: IBlogArticles) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<IBlogArticles> = async () => {
+export const getStaticProps: GetStaticProps<any> = async () => {
   const response = await fetchPosts();
   const posts = response.map((blog) => blog.fields).slice(0, 3);
 

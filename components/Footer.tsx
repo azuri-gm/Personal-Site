@@ -1,3 +1,6 @@
+import GithubIcon from './icons/GithubIcon';
+import TwitterIcon from './icons/TwitterIcon';
+
 const Footer = () => {
   return (
     <section className='container'>
@@ -10,7 +13,14 @@ const Footer = () => {
             Built with React. Hosted on Vercel.
           </p>
         </div>
-        <div>Icons go here</div>
+        <div className='flex gap-x-4'>
+          <a href='https://github.com/azuri-gm'>
+            <GithubIcon />
+          </a>
+          <a href='https://twitter.com/@At_zuri'>
+            <TwitterIcon />
+          </a>
+        </div>
       </div>
     </section>
   );

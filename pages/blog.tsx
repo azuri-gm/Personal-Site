@@ -1,13 +1,15 @@
-import { BlogCard, IBlogCardProps } from '@/components/BlogCard';
+import { BlogCard } from '@/components/BlogCard';
+import { IBlogArticles } from '@/components/LatestArticles';
 import { GetStaticProps } from 'next';
+import { fetchPosts } from 'utils/contentfulPosts';
 
-const blog = ({ blogPosts }: IBlogCardProps) => {
+const blog = ({ posts }: IBlogArticles) => {
   return (
     <section>
       <h1 className='text-5xl mb-10'>Blog Posts</h1>
-      {blogPosts.map(
-        ({ blogPost }): JSX.Element => (
-          <BlogCard blogPost={blogPost} key={blogPost.name} />
+      {posts.map(
+        (post): JSX.Element => (
+          <BlogCard blogPost={post} key={post.title} />
         ),
       )}
     </section>
@@ -16,48 +18,13 @@ const blog = ({ blogPosts }: IBlogCardProps) => {
 
 export default blog;
 
-export const getStaticProps: GetStaticProps<IBlogCardProps> = async () => {
-  const blogPosts = [
-    {
-      blogPost: {
-        name: 'Reducing cognitive load by theming my tools',
-        date: 'September 08, 2019',
-        summary:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur.',
-        slug: 'fdsa1',
-      },
-    },
-    {
-      blogPost: {
-        name: 'Code splitting & lazy loading a server side rendered React app',
-        date: 'September 08, 2019',
-        summary:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur.',
-        slug: 'fdsa2',
-      },
-    },
-    {
-      blogPost: {
-        name: 'Easy project switching with Itermocil & command line shortcuts',
-        date: 'September 08, 2019',
-        summary:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur.',
-        slug: 'fdsa3',
-      },
-    },
-    {
-      blogPost: {
-        name: 'Easy project switching with Itermocil & command line shortcuts Version III',
-        date: 'September 10, 2020',
-        summary:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur.',
-        slug: 'fdsa4',
-      },
-    },
-  ];
+export const getStaticProps: GetStaticProps<ILatestBlogArticles> = async () => {
+  const response = await fetchPosts();
+  const posts = response.map((blog) => blog.fields);
+
   return {
     props: {
-      blogPosts,
+      posts,
     },
   };
 };

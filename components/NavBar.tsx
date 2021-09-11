@@ -12,16 +12,12 @@ const links: Link[] = [
     path: '/',
   },
   {
-    name: 'About',
-    path: '/about',
-  },
-  {
     name: 'Blog',
     path: '/blog',
   },
   {
-    name: 'Contact',
-    path: '/contact',
+    name: 'About',
+    path: '/about',
   },
 ];
 

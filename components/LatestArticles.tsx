@@ -1,20 +1,24 @@
+import { ImageFields } from '@/common/types';
+import { format } from 'date-fns';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 import ChevronRight from './icons/ChevronRight';
 import ReactIcon from './icons/ReactIcon';
 
-type IArticle = {
-  name: string;
-  date: string;
-  icon: string;
+export type IBlogArticle = {
+  title: string;
+  subtitle: string;
   slug: string;
+  content: string;
+  headerImage: ImageFields;
+  date: string;
 };
 
-export interface ILatestArticlesProps {
-  articles: IArticle[];
+export interface IBlogArticles {
+  posts: IBlogArticle[];
 }
 
-const LatestArticles = ({ articles }: ILatestArticlesProps): ReactElement => {
+const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
   return (
     <section className='mt-16'>
       <div className='flex justify-between items-center mb-8'>
@@ -29,14 +33,16 @@ const LatestArticles = ({ articles }: ILatestArticlesProps): ReactElement => {
         </div>
       </div>
       <div>
-        {articles.map(({ date, name, icon, slug }) => (
+        {posts.map(({ date, title, headerImage, slug }) => (
           <div key={slug} className='mb-7 flex items-start'>
             <div>
               <ReactIcon />
             </div>
             <div className='flex flex-col'>
-              <p className='text-lg font-medium'>{name}</p>
-              <p className='text-xs text-shade-blue'>{date}</p>
+              <p className='text-lg font-medium'>{title}</p>
+              <p className='text-xs text-shade-blue'>
+                {format(new Date(date), 'LLLL dd, yyyy')}
+              </p>
             </div>
           </div>
         ))}

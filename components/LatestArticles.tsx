@@ -22,7 +22,7 @@ const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
   return (
     <section className='mt-16'>
       <div className='flex justify-between items-center mb-8'>
-        <h1 className='text-2xl font-medium'>Latest Articles</h1>
+        <h1 className='sm:text-2xl text-xl font-medium'>Latest Articles</h1>
         <div className='flex items-center gap-2'>
           <Link href='/blog' passHref>
             <div className='flex gap-x-2 items-center cursor-pointer p-2 transition duration-700 ease-in-out hover:bg-filler-blue rounded'>

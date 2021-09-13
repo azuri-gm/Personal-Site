@@ -14,10 +14,12 @@ const blog = ({ posts }: IBlogArticles) => {
           content='Personal posts about technology and life'
         />
       </Head>
-      <h1 className='text-5xl mb-10'>Blog Posts</h1>
+      <h1 className='text-5xl mb-10 sm:text-left text-center'>
+        Blog Posts {`(${posts.length})`}
+      </h1>
       {posts.map(
         (post): JSX.Element => (
-          <BlogCard blogPost={post} key={post.title} />
+          <BlogCard blogPost={post} key={post.slug} />
         ),
       )}
     </div>

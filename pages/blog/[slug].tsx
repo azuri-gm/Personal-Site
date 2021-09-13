@@ -100,5 +100,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       blogPost: data.items[0],
     },
+    revalidate: 60 * 10,
   };
 };

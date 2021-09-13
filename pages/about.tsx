@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { ChangeEvent, FormEvent, useState } from 'react';
 
 const About: NextPage = () => {
-  const [formStatus, setFormStatus] = useState(true);
+  const [formStatus, setFormStatus] = useState(false);
   const [query, setQuery] = useState({
     name: '',
     email: '',

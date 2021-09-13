@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 import ChevronRight from './icons/ChevronRight';
-import ReactIcon from './icons/ReactIcon';
+import VSCodeIcon from './icons/VSCodeIcon';
 
 export type IBlogArticle = {
   title: string;
@@ -38,7 +38,7 @@ const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
             <a>
               <div className='mb-7 flex items-start'>
                 <div>
-                  <ReactIcon />
+                  <VSCodeIcon />
                 </div>
                 <div className='flex flex-col'>
                   <p className='text-lg font-medium'>{title}</p>

@@ -1,18 +1,26 @@
 import { BlogCard } from '@/components/BlogCard';
 import { IBlogArticles } from '@/components/LatestArticles';
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import { fetchPosts } from 'utils/contentfulPosts';
 
 const blog = ({ posts }: IBlogArticles) => {
   return (
-    <section>
+    <div>
+      <Head>
+        <title>Blog Posts</title>
+        <meta
+          name='description'
+          content='Personal posts about technology and life'
+        />
+      </Head>
       <h1 className='text-5xl mb-10'>Blog Posts</h1>
       {posts.map(
         (post): JSX.Element => (
           <BlogCard blogPost={post} key={post.title} />
         ),
       )}
-    </section>
+    </div>
   );
 };
 

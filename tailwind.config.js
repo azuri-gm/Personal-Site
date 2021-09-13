@@ -22,6 +22,41 @@ module.exports = {
       textShadow: {
         custom: '0px 0px 76px rgba(188, 251, 195, 0.3)',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#ECF8FF',
+            fontFamily: 'Jost',
+            h1: {
+              color: '#ECF8FF',
+            },
+            h2: {
+              color: '#ECF8FF',
+            },
+            h3: {
+              color: '#ECF8FF',
+            },
+            h4: {
+              color: '#ECF8FF',
+            },
+            h5: {
+              color: '#ECF8FF',
+            },
+            a: {
+              color: '#ECF8FF',
+            },
+            p: {
+              color: '#ECF8FF',
+            },
+            strong: {
+              color: '#ECF8FF',
+            },
+            code: {
+              color: '#ECF8FF',
+            },
+          },
+        },
+      },
     },
   },
   variants: {

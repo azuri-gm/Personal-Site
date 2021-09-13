@@ -20,3 +20,11 @@ export const fetchPosts = async (): Promise<Entry<BlogsResponse>[]> => {
   const posts = entries.items ?? {};
   return posts;
 };
+
+export const fetchPost = async (slug: string) => {
+  const entry = await client.getEntries({
+    content_type: 'blogPosts',
+    'fields.slug': slug,
+  });
+  return entry;
+};

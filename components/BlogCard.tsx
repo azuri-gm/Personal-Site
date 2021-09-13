@@ -34,7 +34,7 @@ const BlogCard = ({
         </p>
         <h3 className='text-2xl font-bold mb-3'>{title}</h3>
         <p className='mb-6'>{subtitle}</p>
-        <Link href={`/${slug}`}>
+        <Link href={`blog/${slug}`}>
           <a className='text-coral-blue text-sm hover:bg-filler-blue rounded'>
             Read more...
           </a>

@@ -34,17 +34,21 @@ const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
       </div>
       <div>
         {posts.map(({ date, title, headerImage, slug }) => (
-          <div key={slug} className='mb-7 flex items-start'>
-            <div>
-              <ReactIcon />
-            </div>
-            <div className='flex flex-col'>
-              <p className='text-lg font-medium'>{title}</p>
-              <p className='text-xs text-shade-blue'>
-                {format(new Date(date), 'LLLL dd, yyyy')}
-              </p>
-            </div>
-          </div>
+          <Link href={`/blog/${slug}`} key={slug}>
+            <a>
+              <div className='mb-7 flex items-start'>
+                <div>
+                  <ReactIcon />
+                </div>
+                <div className='flex flex-col'>
+                  <p className='text-lg font-medium'>{title}</p>
+                  <p className='text-xs text-shade-blue'>
+                    {format(new Date(date), 'LLLL dd, yyyy')}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </Link>
         ))}
       </div>
     </section>

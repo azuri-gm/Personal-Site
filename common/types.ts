@@ -20,6 +20,7 @@ export interface ImageFields {
 }
 
 export interface BlogsResponse {
+  slug?: string;
   metadata: Metadata;
   sys: Sys;
   fields: {
@@ -27,6 +28,7 @@ export interface BlogsResponse {
     slug: string;
     date: string;
     subtitle: string;
+    content: string;
     headerImage: {
       metadata: Metadata;
       sys: Sys;

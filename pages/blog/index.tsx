@@ -1,12 +1,13 @@
 import { BlogCard } from '@/components/BlogCard';
 import { IBlogArticles } from '@/components/LatestArticles';
+import Layout from '@/components/Layout';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { fetchPosts } from 'utils/contentfulPosts';
 
 const blog = ({ posts }: IBlogArticles) => {
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Blog Posts</title>
         <meta
@@ -14,6 +15,7 @@ const blog = ({ posts }: IBlogArticles) => {
           content='Personal posts about technology and life'
         />
       </Head>
+
       <h1 className='text-5xl mb-10 sm:text-left text-center'>
         Blog Posts {`(${posts.length})`}
       </h1>
@@ -22,7 +24,7 @@ const blog = ({ posts }: IBlogArticles) => {
           <BlogCard blogPost={post} key={post.slug} />
         ),
       )}
-    </div>
+    </Layout>
   );
 };
 

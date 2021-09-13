@@ -1,4 +1,6 @@
+import CTA from '@/components/CTA';
 import { IBlogArticles, LatestArticles } from '@/components/LatestArticles';
+import Layout from '@/components/Layout';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { fetchPosts } from 'utils/contentfulPosts';
@@ -6,14 +8,15 @@ import Intro from '../components/Intro';
 
 const Home = ({ posts }: IBlogArticles) => {
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Azuri Gaytan Site</title>
         <meta name='description' content='Personal portfolio' />
       </Head>
       <Intro />
       <LatestArticles posts={posts} />
-    </div>
+      <CTA />
+    </Layout>
   );
 };
 

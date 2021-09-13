@@ -12,6 +12,8 @@ module.exports = {
         'filler-blue': '#416883',
         'shade-blue': '#5e8ca7',
         'coral-blue': '#7AB6D9',
+        'background-blue': '#1C2C35',
+        'bright-lime': '#83F9A2',
       },
       dropShadow: {
         '3xl': '0px 0px 76px rgba(188, 251, 195, 0.3)',

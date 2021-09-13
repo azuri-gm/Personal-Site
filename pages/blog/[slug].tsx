@@ -1,4 +1,5 @@
 import { BlogItem } from '@/common/types';
+import Layout from '@/components/Layout';
 import { format } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -34,11 +35,10 @@ const Post = ({
 }: {
   blogPost: BlogItem;
 }) => {
-  console.log(JSON.stringify(headerImage));
   const { minutes } = readingTime(content || '');
 
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Blog Post</title>
         <meta name='description' content={`Blog post with title: ${title}`} />
@@ -76,7 +76,7 @@ const Post = ({
           {content}
         </ReactMarkdown>
       </div>
-    </div>
+    </Layout>
   );
 };
 

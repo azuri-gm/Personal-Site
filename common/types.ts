@@ -32,6 +32,14 @@ export interface BlogItem {
   };
 }
 
+export interface MailData {
+  from: string;
+  to: string;
+  subject: string;
+  text: string;
+  html: string;
+}
+
 export interface BlogResponse {
   sys: { type: string };
   total: number;

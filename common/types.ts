@@ -19,16 +19,40 @@ export interface ImageFields {
   };
 }
 
+export interface BlogItem {
+  metadata: Metadata;
+  sys: Sys;
+  fields: {
+    title: string;
+    subtitle: string;
+    slug: string;
+    content: string;
+    date: string;
+    headerImage: ImageFields;
+  };
+}
+
+export interface BlogResponse {
+  sys: { type: string };
+  total: number;
+  skip: number;
+  limit: number;
+  items: BlogItem[];
+  includes: {
+    Asset: any[];
+  };
+}
+
 export interface BlogsResponse {
   slug?: string;
   metadata: Metadata;
   sys: Sys;
   fields: {
     title: string;
-    slug: string;
-    date: string;
     subtitle: string;
+    slug: string;
     content: string;
+    date: string;
     headerImage: {
       metadata: Metadata;
       sys: Sys;

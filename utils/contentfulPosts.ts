@@ -1,4 +1,4 @@
-import { BlogsResponse } from '@/common/types';
+import { BlogResponse, BlogsResponse } from '@/common/types';
 import {
   ContentfulClientApi,
   createClient,
@@ -21,8 +21,10 @@ export const fetchPosts = async (): Promise<Entry<BlogsResponse>[]> => {
   return posts;
 };
 
-export const fetchPost = async (slug: string) => {
-  const entry = await client.getEntries({
+export const fetchPost = async (
+  slug: string,
+): Promise<EntryCollection<BlogResponse>> => {
+  const entry: EntryCollection<BlogResponse> = await client.getEntries({
     content_type: 'blogPosts',
     'fields.slug': slug,
   });

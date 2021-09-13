@@ -35,7 +35,10 @@ const NavBar = () => {
       <nav>
         <ul className='flex gap-x-2'>
           {links.map(({ name, path }, index) => (
-            <li key={index} className='p-2 hover:bg-filler-blue rounded'>
+            <li
+              key={index}
+              className='p-2 transition duration-700 ease-in-out hover:bg-filler-blue rounded'
+            >
               <Link href={path}>
                 <a>{name}</a>
               </Link>

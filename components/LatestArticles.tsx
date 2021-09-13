@@ -25,7 +25,7 @@ const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
         <h1 className='text-2xl font-medium'>Latest Articles</h1>
         <div className='flex items-center gap-2'>
           <Link href='/blog' passHref>
-            <div className='flex gap-x-2 items-center cursor-pointer p-2 hover:bg-filler-blue rounded'>
+            <div className='flex gap-x-2 items-center cursor-pointer p-2 transition duration-700 ease-in-out hover:bg-filler-blue rounded'>
               <p>All articles</p>
               <ChevronRight />
             </div>
@@ -33,7 +33,7 @@ const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
         </div>
       </div>
       <div>
-        {posts.map(({ date, title, headerImage, slug }) => (
+        {posts.map(({ date, title, slug }) => (
           <Link href={`/blog/${slug}`} key={slug}>
             <a>
               <div className='mb-7 flex items-start'>

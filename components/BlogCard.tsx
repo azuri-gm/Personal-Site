@@ -24,7 +24,7 @@ export interface IBlogCardProps {
 }
 
 const BlogCard = ({
-  blogPost: { content, date, headerImage, slug, subtitle, title },
+  blogPost: { date, slug, subtitle, title },
 }: IBlogPost): ReactElement => {
   return (
     <div className='flex flex-col'>
@@ -33,9 +33,9 @@ const BlogCard = ({
           {format(new Date(date), 'LLLL dd, yyyy')}
         </p>
         <h3 className='text-2xl font-bold mb-3'>{title}</h3>
-        <p className='mb-6'>{subtitle}</p>
+        <p className='mb-10'>{subtitle}</p>
         <Link href={`blog/${slug}`}>
-          <a className='text-coral-blue text-sm hover:bg-filler-blue rounded'>
+          <a className='p-2 text-coral-blue text-sm transition duration-700 ease-in-out hover:bg-filler-blue rounded'>
             Read more...
           </a>
         </Link>

@@ -1,6 +1,7 @@
 import { BlogItem } from '@/common/types';
 import { format } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
 import readingTime from 'reading-time';
 import { fetchPost, fetchPosts } from 'utils/contentfulPosts';
@@ -16,6 +17,10 @@ const Post = ({
 
   return (
     <div>
+      <Head>
+        <title>Blog Post</title>
+        <meta name='description' content={`Blog post with title: ${title}`} />
+      </Head>
       <div className='flex flex-col mb-12'>
         <h1 className='mb-0 text-xl text-center sm:text-left font-bold sm:text-5xl sm:font-extrabold'>
           {title}

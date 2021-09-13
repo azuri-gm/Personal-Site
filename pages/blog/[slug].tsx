@@ -35,7 +35,6 @@ const Post = ({
 }: {
   blogPost: BlogItem;
 }) => {
-  console.log(JSON.stringify(headerImage));
   const { minutes } = readingTime(content || '');
 
   return (

@@ -12,7 +12,7 @@ const Post = ({ blogPost }: { blogPost: BlogsResponse }) => {
   return (
     <div>
       <div className='flex flex-col mb-12'>
-        <h1 className='mb-0 text-xl font-bold sm:text-3xl sm:font-extrabold'>
+        <h1 className='mb-0 text-xl text-center sm:text-left font-bold sm:text-5xl sm:font-extrabold'>
           {blogPost.fields.title}
         </h1>
         <div className='flex gap-x-4 text-shade-blue'>
@@ -22,7 +22,7 @@ const Post = ({ blogPost }: { blogPost: BlogsResponse }) => {
           <p className='sm:text-base text-sm'>{Math.ceil(minutes)} min read</p>
         </div>
       </div>
-      <div className='prose prose-sm mx-auto max-w-none'>
+      <div className='prose sm:prose-lg prose-sm mx-auto max-w-none'>
         <ReactMarkdown>{blogPost.fields.content}</ReactMarkdown>
       </div>
     </div>

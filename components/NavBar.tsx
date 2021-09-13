@@ -24,10 +24,14 @@ const links: Link[] = [
 const NavBar = () => {
   return (
     <div className='flex sm:flex-row flex-col justify-between items-center mb-4 p-4'>
-      <div className='flex mb-2 sm:mb-0'>
-        <Heart />
-        <p>Azuri Gaytan</p>
-      </div>
+      <Link href='/' passHref>
+        <a>
+          <div className='flex mb-2 sm:mb-0'>
+            <Heart />
+            <p>Azuri Gaytan</p>
+          </div>
+        </a>
+      </Link>
       <nav>
         <ul className='flex gap-x-2'>
           {links.map(({ name, path }, index) => (

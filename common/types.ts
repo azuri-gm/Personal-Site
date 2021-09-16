@@ -1,35 +1,13 @@
-import { Metadata, Sys } from 'contentful';
-
-export interface ImageFields {
+interface Author {
+  name: string;
   title: string;
-  description: string;
-  metadata: Metadata;
-  sys: Sys;
-  file: {
-    url: string;
-    details: {
-      size: number;
-      image: {
-        width: number;
-        height: number;
-      };
-      fileName: string;
-      contentType: string;
-    };
-  };
+  picture: Picture;
 }
 
-export interface BlogItem {
-  metadata: Metadata;
-  sys: Sys;
-  fields: {
-    title: string;
-    subtitle: string;
-    slug: string;
-    content: string;
-    date: string;
-    headerImage: ImageFields;
-  };
+interface Picture {
+  width: number;
+  height: number;
+  url: string;
 }
 
 export interface MailData {
@@ -40,31 +18,20 @@ export interface MailData {
   html: string;
 }
 
-export interface BlogResponse {
-  sys: { type: string };
-  total: number;
-  skip: number;
-  limit: number;
-  items: BlogItem[];
-  includes: {
-    Asset: any[];
-  };
+export interface Post {
+  createdAt: string;
+  title: string;
+  excerpt: string;
+  slug: string;
+  postContent: string;
+  author: Author;
+  coverImage?: any;
 }
 
-export interface BlogsResponse {
-  slug?: string;
-  metadata: Metadata;
-  sys: Sys;
-  fields: {
-    title: string;
-    subtitle: string;
-    slug: string;
-    content: string;
-    date: string;
-    headerImage: {
-      metadata: Metadata;
-      sys: Sys;
-      fields?: ImageFields;
-    };
-  };
+export interface PostCollection {
+  posts: Post[];
+}
+
+export interface SinglePost {
+  post: Post;
 }

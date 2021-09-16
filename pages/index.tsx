@@ -1,12 +1,13 @@
+import { PostCollection } from '@/common/types';
 import CTA from '@/components/CTA';
-import { IBlogArticles, LatestArticles } from '@/components/LatestArticles';
+import { LatestArticles } from '@/components/LatestArticles';
 import Layout from '@/components/Layout';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { fetchPosts } from 'utils/contentfulPosts';
 import Intro from '../components/Intro';
 
-const Home = ({ posts }: IBlogArticles) => {
+const Home = ({ posts }: PostCollection) => {
   return (
     <Layout>
       <Head>
@@ -28,13 +29,13 @@ const Home = ({ posts }: IBlogArticles) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<any> = async () => {
-  const response = await fetchPosts();
-  const posts = response.map((blog) => blog.fields).slice(0, 3);
+export const getStaticProps: GetStaticProps<PostCollection> = async () => {
+  const { posts } = await fetchPosts();
+  const recentPosts = posts.slice(0, 3);
 
   return {
     props: {
-      posts,
+      posts: recentPosts,
     },
   };
 };

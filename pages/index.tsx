@@ -13,9 +13,15 @@ const Home = ({ posts }: IBlogArticles) => {
         <title>Azuri Gaytan Site</title>
         <meta name='description' content='Personal portfolio' />
       </Head>
-      <Intro />
-      <LatestArticles posts={posts} />
-      <CTA />
+      <div className='flex flex-col h-70v'>
+        <div className='flex-grow'>
+          <Intro />
+          <LatestArticles posts={posts} />
+        </div>
+        <div className='h-1/3'>
+          <CTA />
+        </div>
+      </div>
     </Layout>
   );
 };

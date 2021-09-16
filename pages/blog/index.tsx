@@ -16,7 +16,7 @@ const blog = ({ posts }: IBlogArticles) => {
         />
       </Head>
 
-      <h1 className='text-5xl mb-10 sm:text-left text-center'>
+      <h1 className='sm:text-5xl text-3xl mb-10 sm:text-left text-center'>
         Blog Posts {`(${posts.length})`}
       </h1>
       {posts.map(

@@ -3,7 +3,7 @@ import TwitterIcon from './icons/TwitterIcon';
 
 const Footer = () => {
   return (
-    <section className='container'>
+    <section className=''>
       <div className='flex sm:flex-row flex-col justify-between items-center p-4'>
         <div>
           <p className='text-center'>

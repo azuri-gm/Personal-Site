@@ -43,11 +43,11 @@ const Post = ({
         <title>Blog Post</title>
         <meta name='description' content={`Blog post with title: ${title}`} />
       </Head>
-      <div className='flex flex-col mb-12'>
-        <h1 className='mb-0 text-xl text-center sm:text-left font-bold sm:text-5xl sm:font-extrabold'>
+      <div className='flex flex-col mb-10'>
+        <h1 className='mb-0 text-xl text-center font-bold sm:text-5xl sm:font-extrabold'>
           {title}
         </h1>
-        <div className='flex gap-x-4 text-shade-blue'>
+        <div className='flex justify-between text-shade-blue mt-4'>
           <p className='sm:text-base text-sm'>
             {format(new Date(date), 'LLLL dd, yyyy')}
           </p>
@@ -58,23 +58,55 @@ const Post = ({
           )}
         </div>
       </div>
-      <div className='prose sm:prose-lg prose-sm mx-auto max-w-none'>
-        <ReactMarkdown
-          components={{
-            img({ src, alt, width, height }) {
-              return (
-                <ImageRenderer
-                  src={src as string}
-                  alt={alt as string}
-                  width={width || 1100}
-                  height={height || 460}
-                />
-              );
-            },
-          }}
-        >
-          {content}
-        </ReactMarkdown>
+      <div
+        className='mx-auto lg:grid lg:grid-cols-4 lg:col-gap-6 pb-16 lg:pb-20'
+        style={{ gridTemplateRows: 'auto 1fr;' }}
+      >
+        {/* <dl className='pt-6 pb-10 lg:pt-11 '>
+          <dt>Author</dt>
+          <dd>
+            <ul className='flex justify-center lg:block space-x-8 sm:space-x-12 lg:space-x-0 lg:space-y-8'>
+              <li className='flex space-x-2'>
+                <div className='rounded-full relative overflow-hidden'>
+                  <Image
+                    src='/public/favicon-16x16.png'
+                    alt='author image'
+                    width={10}
+                    height={10}
+                  />
+                </div>
+                <dl className='flex-1 text-sm font-medium leading-5'>
+                  <dd>Eduardo Gaytan</dd>
+                  <dd>Software Engineer</dd>
+                </dl>
+              </li>
+            </ul>
+          </dd>
+        </dl> */}
+        <div className='prose max-w-none lg:pb-0 lg:col-span-3 lg:row-span-2 mb-10'>
+          <ReactMarkdown
+            components={{
+              img({ src, alt, width, height }) {
+                return (
+                  <ImageRenderer
+                    src={src as string}
+                    alt={alt as string}
+                    width={width || 1100}
+                    height={height || 460}
+                  />
+                );
+              },
+            }}
+          >
+            {content}
+          </ReactMarkdown>
+        </div>
+        <div className='text-sm font-medium leading-5 lg:col-start-1 lg:row-start-2'>
+          <div className='flex sm:flex-col'>
+            <div id='author'>Eduardo Gaytan</div>
+            <div id='navigation'>Go back</div>
+          </div>
+        </div>
       </div>
     </Layout>
   );

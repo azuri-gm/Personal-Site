@@ -81,10 +81,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <meta name='msapplication-TileColor' content='#ffffff' />
         <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
       </Head>
-      <div className='w-screen mx-auto bg-darker-blue  text-custom-grey font-jost'>
-        <div className='sm:w-3/5 w-4/5 mx-auto p-4 flex flex-col h-screen max-h-screen'>
-          <NavBar />
-          <div className='flex-grow p-4 overflow-y-scroll'>{children}</div>
+      {/* flex-grow max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full */}
+      <div className='flex flex-col min-h-screen bg-darker-blue text-custom-grey font-jost'>
+        <div className='flex-grow max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full'>
+          <div className=''>
+            <NavBar />
+            <div className='flex-grow p-4 overflow-y-scroll'>{children}</div>
+          </div>
+        </div>
+        <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full'>
           <Footer />
         </div>
       </div>

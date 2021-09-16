@@ -1,24 +1,11 @@
-import { ImageFields } from '@/common/types';
+import { PostCollection } from '@/common/types';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 import ChevronRight from './icons/ChevronRight';
 import VSCodeIcon from './icons/VSCodeIcon';
 
-export type IBlogArticle = {
-  title: string;
-  subtitle: string;
-  slug: string;
-  content: string;
-  headerImage: ImageFields;
-  date: string;
-};
-
-export interface IBlogArticles {
-  posts: IBlogArticle[];
-}
-
-const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
+const LatestArticles = ({ posts }: PostCollection): ReactElement => {
   return (
     <section className='mt-16'>
       <div className='flex justify-between items-center mb-8'>
@@ -33,7 +20,7 @@ const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
         </div>
       </div>
       <div>
-        {posts.map(({ date, title, slug }) => (
+        {posts.map(({ createdAt, slug, title }) => (
           <Link href={`/blog/${slug}`} key={slug}>
             <a>
               <div className='mb-7 flex items-start'>
@@ -43,7 +30,7 @@ const LatestArticles = ({ posts }: IBlogArticles): ReactElement => {
                 <div className='flex flex-col'>
                   <p className='text-lg font-medium'>{title}</p>
                   <p className='text-xs text-shade-blue'>
-                    {format(new Date(date), 'LLLL dd, yyyy')}
+                    {format(new Date(createdAt), 'LLLL dd, yyyy')}
                   </p>
                 </div>
               </div>

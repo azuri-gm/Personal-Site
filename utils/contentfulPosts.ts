@@ -1,32 +1,22 @@
-import { BlogResponse, BlogsResponse } from '@/common/types';
-import {
-  ContentfulClientApi,
-  createClient,
-  Entry,
-  EntryCollection,
-} from 'contentful';
+import { Post, PostCollection } from '@/common/types';
+import { GraphQLClient } from 'graphql-request';
+import { queryPost, queryPosts } from 'graphql/queries';
 
-const space: string = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '';
-const accessToken: string =
-  process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || '';
+const url: string = process.env.NEXT_GRAPHQL_URL || '';
+const token: string = process.env.NEXT_GRAPHQL_TOKEN || '';
 
-const client: ContentfulClientApi = createClient({
-  space,
-  accessToken,
+const client = new GraphQLClient(url, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
 });
 
-export const fetchPosts = async (): Promise<Entry<BlogsResponse>[]> => {
-  const entries: EntryCollection<BlogsResponse> = await client.getEntries();
-  const posts = entries.items ?? {};
+export const fetchPosts = async (): Promise<PostCollection> => {
+  const posts: PostCollection = await client.request(queryPosts);
   return posts;
 };
 
-export const fetchPost = async (
-  slug: string,
-): Promise<EntryCollection<BlogResponse>> => {
-  const entry: EntryCollection<BlogResponse> = await client.getEntries({
-    content_type: 'blogPosts',
-    'fields.slug': slug,
-  });
-  return entry;
+export const fetchPost = async (slug: string): Promise<Post> => {
+  const post: Post = await client.request(queryPost(slug));
+  return post;
 };

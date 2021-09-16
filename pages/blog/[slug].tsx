@@ -41,7 +41,7 @@ const BlogPost = ({ post: { post } }: { post: { post: Post } }) => {
         />
       </Head>
       <div className="flex flex-col mb-10">
-        <h1 className="mb-0 text-xl text-center font-bold sm:text-5xl sm:font-extrabold">
+        <h1 className="mb-0 text-4xl text-center font-bold sm:text-5xl sm:font-extrabold">
           {post.title}
         </h1>
         <div className="flex justify-between text-shade-blue mt-4">
@@ -78,7 +78,7 @@ const BlogPost = ({ post: { post } }: { post: { post: Post } }) => {
           </ReactMarkdown>
         </div>
         <div className="text-sm font-medium leading-5 lg:col-start-1 lg:row-start-2">
-          <div className="flex sm:flex-col gap-y-4">
+          <div className="flex justify-between md:flex-col gap-y-4">
             <div id="author" className="flex gap-x-2">
               <Image
                 src={post.author.picture.url}
@@ -91,7 +91,7 @@ const BlogPost = ({ post: { post } }: { post: { post: Post } }) => {
                 <p className="text-shade-blue">{post.author.title}</p>
               </div>
             </div>
-            <div id="navigation" className="mt-8">
+            <div id="navigation" className="md:mt-8">
               <Link href="/blog">
                 <a className="p-2 transition duration-700 ease-in-out hover:bg-filler-blue rounded">
                   ← Go back

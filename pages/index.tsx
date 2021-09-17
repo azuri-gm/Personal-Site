@@ -9,8 +9,9 @@ import Head from 'next/head';
 import Intro from '../components/Intro';
 
 const Home = ({ posts }: PostCollection) => {
-  const { data, error, isLoading, isSuccess } = useGetPosts();
-  console.log(data, error, isLoading, isSuccess);
+  // const { data, error, isLoading, isSuccess } = useGetPosts();
+  useGetPosts();
+  // console.log(data, error, isLoading, isSuccess);
   return (
     <Layout>
       <Head>

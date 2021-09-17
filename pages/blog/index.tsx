@@ -1,13 +1,9 @@
-import { PostCollection } from "@/common/types";
-import { BlogCard } from "@/components/BlogCard";
-import Layout from "@/components/Layout";
-import { GetStaticProps } from "next";
-import Head from "next/head";
-<<<<<<< Updated upstream
-import { fetchPosts } from "utils/contentfulPosts";
-=======
-import { fetchPosts } from "@/utils/posts";
->>>>>>> Stashed changes
+import { PostCollection } from '@/common/types';
+import { BlogCard } from '@/components/BlogCard';
+import Layout from '@/components/Layout';
+import { fetchPosts } from '@/utils/posts';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
 
 const blog = ({ posts }: PostCollection) => {
   return (
@@ -15,16 +11,12 @@ const blog = ({ posts }: PostCollection) => {
       <Head>
         <title>Blog Posts</title>
         <meta
-          name="description"
-          content="Personal posts about technology and life"
+          name='description'
+          content='Personal posts about technology and life'
         />
       </Head>
 
-<<<<<<< Updated upstream
-      <h1 className="sm:text-5xl text-4xl mb-10 sm:text-left text-center">
-=======
-      <h1 className="sm:text-5xl text-3xl mb-10 sm:text-left text-center">
->>>>>>> Stashed changes
+      <h1 className='sm:text-5xl text-3xl mb-10 sm:text-left text-center'>
         Blog Posts {`(${posts.length})`}
       </h1>
       {posts.map((post) => (

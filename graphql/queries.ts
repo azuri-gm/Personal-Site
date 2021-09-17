@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request';
 
 export const queryPosts = gql`
-  query Posts {
+  query {
     posts {
       createdAt
       title

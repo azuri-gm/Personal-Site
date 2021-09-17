@@ -3,7 +3,11 @@ import { BlogCard } from "@/components/BlogCard";
 import Layout from "@/components/Layout";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+<<<<<<< Updated upstream
 import { fetchPosts } from "utils/contentfulPosts";
+=======
+import { fetchPosts } from "@/utils/posts";
+>>>>>>> Stashed changes
 
 const blog = ({ posts }: PostCollection) => {
   return (
@@ -16,7 +20,11 @@ const blog = ({ posts }: PostCollection) => {
         />
       </Head>
 
+<<<<<<< Updated upstream
       <h1 className="sm:text-5xl text-4xl mb-10 sm:text-left text-center">
+=======
+      <h1 className="sm:text-5xl text-3xl mb-10 sm:text-left text-center">
+>>>>>>> Stashed changes
         Blog Posts {`(${posts.length})`}
       </h1>
       {posts.map((post) => (

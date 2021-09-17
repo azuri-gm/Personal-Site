@@ -5,7 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import readingTime from "reading-time";
-import { fetchPost, fetchPosts } from "utils/contentfulPosts";
+import { fetchPost, fetchPosts } from "@/utils/posts";
 import { Post } from "@/common/types";
 import Link from "next/link";
 
@@ -31,6 +31,7 @@ const ImageRenderer = ({ src, alt, height, width }: ImageRendererProps) => {
 
 const BlogPost = ({ post: { post } }: { post: { post: Post } }) => {
   const { minutes } = readingTime(post.postContent || "");
+
   return (
     <Layout>
       <Head>

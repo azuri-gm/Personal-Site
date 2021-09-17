@@ -2,12 +2,15 @@ import { PostCollection } from '@/common/types';
 import CTA from '@/components/CTA';
 import { LatestArticles } from '@/components/LatestArticles';
 import Layout from '@/components/Layout';
+import { fetchPosts } from '@/utils/posts';
+import { useGetPosts } from 'hooks/useRequest';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { fetchPosts } from 'utils/contentfulPosts';
 import Intro from '../components/Intro';
 
 const Home = ({ posts }: PostCollection) => {
+  const { data, error, isLoading, isSuccess } = useGetPosts();
+  console.log(data, error, isLoading, isSuccess);
   return (
     <Layout>
       <Head>

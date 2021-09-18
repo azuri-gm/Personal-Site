@@ -1,13 +1,14 @@
-import { Post, PostCollection } from "@/common/types";
-import { GraphQLClient } from "graphql-request";
-import { queryPost, queryPosts } from "graphql/queries";
+import { Post, PostCollection } from '@/common/types';
+import { GraphQLClient } from 'graphql-request';
+import { queryPost, queryPosts } from 'graphql/queries';
 
-const url: string = process.env.NEXT_GRAPHQL_URL || "";
-const token: string = process.env.NEXT_GRAPHQL_TOKEN || "";
+const url: string = process.env.NEXT_GRAPHQL_URL || '';
+const token: string = process.env.NEXT_GRAPHQL_TOKEN || '';
 
 const client = new GraphQLClient(url, {
   headers: {
     Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
   },
 });
 

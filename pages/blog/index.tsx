@@ -1,11 +1,21 @@
-import { PostCollection } from '@/common/types';
+import { Post, PostCollection } from '@/common/types';
 import { BlogCard } from '@/components/BlogCard';
 import Layout from '@/components/Layout';
 import { fetchPosts } from '@/utils/posts';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useQuery } from 'react-query';
 
-const blog = ({ posts }: PostCollection) => {
+const Blog = ({ posts }: PostCollection) => {
+  const { data, isLoading, error } = useQuery<Post[], Error>(
+    'get-posts',
+    //@ts-ignore
+    fetchPosts,
+    {
+      initialData: posts,
+    },
+  );
+  const results: Post[] = data as Post[];
   return (
     <Layout>
       <Head>
@@ -19,14 +29,14 @@ const blog = ({ posts }: PostCollection) => {
       <h1 className='sm:text-5xl text-3xl mb-10 sm:text-left text-center'>
         Blog Posts {`(${posts.length})`}
       </h1>
-      {posts.map((post) => (
+      {results.map((post) => (
         <BlogCard post={post} key={post.slug} />
       ))}
     </Layout>
   );
 };
 
-export default blog;
+export default Blog;
 
 export const getStaticProps: GetStaticProps<PostCollection> = async () => {
   const { posts } = await fetchPosts();

@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
 import '../styles/globals.scss';
 
@@ -10,7 +11,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 20 * 1000,
+            staleTime: 20 * 60 * 1000,
           },
         },
       }),
@@ -18,7 +19,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+        <ReactQueryDevtools initialIsOpen={false} />
         <Component {...pageProps} />
       </Hydrate>
     </QueryClientProvider>

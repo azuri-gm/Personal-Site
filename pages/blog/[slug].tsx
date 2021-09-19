@@ -36,7 +36,7 @@ const BlogPost = ({ post: { post } }: { post: { post: Post } }) => {
     Post,
     Error
   >(
-    'post',
+    `post-${post.slug}`,
     //@ts-ignore
     fetchPost,
     {
@@ -45,6 +45,10 @@ const BlogPost = ({ post: { post } }: { post: { post: Post } }) => {
   );
   const result: Post = data as Post;
   const { minutes } = readingTime(result.postContent || '');
+
+  if (error) {
+    return <p>This is the error: {error}</p>;
+  }
 
   return (
     <Layout>
@@ -130,7 +134,8 @@ const BlogPost = ({ post: { post } }: { post: { post: Post } }) => {
 export default BlogPost;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { posts } = await fetchPosts();
+  //@ts-ignore
+  const { posts }: { posts: Post[] } = await fetchPosts();
   return {
     paths: posts.map(({ slug }) => ({
       params: { slug },
@@ -146,6 +151,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       post,
     },
-    revalidate: 60 * 10,
+    revalidate: 60 * 10 * 10,
   };
 };

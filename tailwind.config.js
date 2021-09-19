@@ -31,7 +31,7 @@ module.exports = {
         '3xl': '0px 0px 76px rgba(188, 251, 195, 0.3)',
       },
       fontFamily: {
-        jost: ['Jost'],
+        jost: ['Roboto Mono'],
       },
       textShadow: {
         custom: '0px 0px 76px rgba(188, 251, 195, 0.3)',
@@ -40,7 +40,7 @@ module.exports = {
         DEFAULT: {
           css: {
             color: '#ECF8FF',
-            fontFamily: 'Jost',
+            fontFamily: 'Roboto Mono',
             h1: {
               color: '#ECF8FF',
             },

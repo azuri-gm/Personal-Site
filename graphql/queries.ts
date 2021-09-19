@@ -46,6 +46,7 @@ export const queryPost = (slug: string) => gql`
       postContent
       createdAt
       title
+      slug
     }
   }
 `;

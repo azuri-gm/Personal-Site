@@ -28,10 +28,6 @@ export interface Post {
   coverImage?: any;
 }
 
-export interface PostCollection {
-  posts: Post[];
-}
+export type PostCollection = Post[] | Error;
 
-export interface SinglePost {
-  post: Post;
-}
+export type SinglePost = Post | Error;

@@ -1,11 +1,12 @@
-import { PostCollection } from '@/common/types';
+import { Post, PostCollection } from '@/common/types';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 import ChevronRight from './icons/ChevronRight';
 import VSCodeIcon from './icons/VSCodeIcon';
 
-const LatestArticles = ({ posts }: PostCollection): ReactElement => {
+const LatestArticles = ({ posts }: { posts: PostCollection }): ReactElement => {
+  const results = posts as Post[];
   return (
     <section className='mt-16'>
       <div className='flex justify-between items-center mb-8'>
@@ -20,7 +21,7 @@ const LatestArticles = ({ posts }: PostCollection): ReactElement => {
         </div>
       </div>
       <div>
-        {posts.map(({ createdAt, slug, title }) => (
+        {results.map(({ createdAt, slug, title }) => (
           <Link href={`/blog/${slug}`} key={slug}>
             <a>
               <div className='mb-7 flex items-start'>

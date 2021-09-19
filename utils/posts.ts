@@ -1,4 +1,4 @@
-import { Post, PostCollection } from '@/common/types';
+import { PostCollection, SinglePost } from '@/common/types';
 import { GraphQLClient } from 'graphql-request';
 import { queryPost, queryPosts } from 'graphql/queries';
 
@@ -13,9 +13,17 @@ const client = new GraphQLClient(url, {
 });
 
 export const fetchPosts = async (): Promise<PostCollection> => {
-  return await client.request(queryPosts);
+  try {
+    return await client.request(queryPosts);
+  } catch (error) {
+    return Error(JSON.stringify(error));
+  }
 };
 
-export const fetchPost = async (slug: string): Promise<Post> => {
-  return await client.request(queryPost(slug));
+export const fetchPost = async (slug: string): Promise<SinglePost> => {
+  try {
+    return await client.request(queryPost(slug));
+  } catch (error) {
+    return Error(JSON.stringify(error));
+  }
 };

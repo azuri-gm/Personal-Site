@@ -9,7 +9,7 @@ import Head from 'next/head';
 import { useQuery, UseQueryResult } from 'react-query';
 import Intro from '../components/Intro';
 
-const Home = ({ posts }: PostCollection) => {
+const Home = ({ posts }: { posts: Post[] }) => {
   const { data, isLoading, error }: UseQueryResult = useQuery<Post[], Error>(
     'get-posts',
     //@ts-ignore
@@ -29,9 +29,8 @@ const Home = ({ posts }: PostCollection) => {
           <Intro />
           <div>
             {isLoading && <PostsShimmer />}
-            {!isLoading && <LatestArticles posts={data as Post[]} />}
+            {!isLoading && <LatestArticles posts={data as PostCollection} />}
           </div>
-          {/* <LatestArticles posts={data as Post[]} /> */}
         </div>
         <div className='h-1/3'>
           <CTA />
@@ -43,9 +42,9 @@ const Home = ({ posts }: PostCollection) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<PostCollection> = async () => {
-  const { posts } = await fetchPosts();
-  const recentPosts = posts.slice(0, 3);
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = (await fetchPosts()) as Post[];
+  const recentPosts = posts.slice(0, 3) as PostCollection;
   return {
     props: {
       posts: recentPosts,

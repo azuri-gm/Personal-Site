@@ -1,7 +1,14 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import Head from 'next/head';
 import { ReactNode } from 'react';
 import Footer from './Footer';
 import NavBar from './NavBar';
+
+const variants = {
+  hidden: { opacity: 0, x: -200, y: 0 },
+  enter: { opacity: 1, x: 0, y: 0 },
+  exit: { opacity: 0, x: 0, y: -100 },
+};
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -82,17 +89,27 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
       </Head>
       {/* flex-grow max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full */}
-      <div className='flex flex-col min-h-screen bg-darker-blue text-custom-grey font-jost'>
-        <div className='flex-grow max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full'>
-          <div className=''>
-            <NavBar />
-            <div className='flex-grow p-4 overflow-y-scroll'>{children}</div>
+      <AnimatePresence exitBeforeEnter>
+        <div className='flex flex-col min-h-screen bg-darker-blue text-custom-grey font-jost'>
+          <div className='flex-grow max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full'>
+            <div className=''>
+              <NavBar />
+              <motion.main
+                className='flex-grow p-4 overflow-y-scroll'
+                exit={{ opacity: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+              >
+                {children}
+              </motion.main>
+            </div>
+          </div>
+          <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full'>
+            <Footer />
           </div>
         </div>
-        <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full'>
-          <Footer />
-        </div>
-      </div>
+      </AnimatePresence>
     </>
   );
 };

@@ -1,11 +1,57 @@
 import { PostCollection } from '@/common/types';
 import { BlogCard } from '@/components/BlogCard';
 import Layout from '@/components/Layout';
+import { motion } from 'framer-motion';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useMemo } from 'react';
 import { fetchPosts } from 'utils/contentfulPosts';
 
+const easing = [0.6, -0.05, 0.01, 0.99];
+
+const fadeInUp = {
+  initial: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.5,
+    },
+  },
+};
+
 const blog = ({ posts }: PostCollection) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const displayedPosts = useMemo(() => {
+    return posts.map((post) => (
+      <motion.div
+        key={post.slug}
+        variants={fadeInUp}
+        initial='initial'
+        animate='animate'
+        exit='exit'
+      >
+        <BlogCard post={post} />
+      </motion.div>
+    ));
+  }, [posts]);
+
   return (
     <Layout>
       <Head>
@@ -19,9 +65,7 @@ const blog = ({ posts }: PostCollection) => {
       <h1 className='sm:text-5xl text-3xl mb-10 sm:text-left text-center'>
         Blog Posts {`(${posts.length})`}
       </h1>
-      {posts.map((post) => (
-        <BlogCard post={post} key={post.slug} />
-      ))}
+      <motion.div variants={stagger}>{displayedPosts}</motion.div>
     </Layout>
   );
 };

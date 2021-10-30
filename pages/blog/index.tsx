@@ -1,40 +1,12 @@
 import { PostCollection } from '@/common/types';
 import { BlogCard } from '@/components/BlogCard';
 import Layout from '@/components/Layout';
+import { fadeInUp, stagger } from '@/utils/animations';
 import { motion } from 'framer-motion';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useMemo } from 'react';
 import { fetchPosts } from 'utils/contentfulPosts';
-
-const easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInUp = {
-  initial: {
-    y: 50,
-    opacity: 0,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.5,
-    },
-  },
-};
 
 const blog = ({ posts }: PostCollection) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks

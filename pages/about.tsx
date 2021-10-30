@@ -30,6 +30,7 @@ const About: NextPage = () => {
     Object.entries(query).forEach(([key, value]) => {
       formData.append(key, value);
     });
+    console.log(formData);
 
     axios
       .post(process.env.NEXT_PUBLIC_GETFORM_FORM_ENDPOINT!, formData, {
@@ -44,7 +45,7 @@ const About: NextPage = () => {
         });
       })
       .catch((error: AxiosError) => {
-        console.log(error);
+        throw new Error(error.message);
       });
   };
 

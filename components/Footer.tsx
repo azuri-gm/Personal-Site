@@ -4,12 +4,12 @@ import TwitterIcon from './icons/TwitterIcon';
 const Footer = () => {
   return (
     <section className=''>
-      <div className='flex sm:flex-row flex-col justify-between items-center p-4'>
+      <div className='flex flex-col items-center justify-between p-4 sm:flex-row'>
         <div>
           <p className='text-center'>
             Developed with &hearts; by Eduardo Gaytan
           </p>
-          <p className='sm:block text-center hidden'>
+          <p className='hidden text-center sm:block'>
             Built with React. Hosted on Vercel.
           </p>
         </div>

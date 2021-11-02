@@ -34,7 +34,7 @@ const blog = ({ posts }: PostCollection) => {
         />
       </Head>
 
-      <h1 className='sm:text-5xl text-3xl mb-10 sm:text-left text-center'>
+      <h1 className='mb-10 text-3xl text-center sm:text-5xl sm:text-left'>
         Blog Posts {`(${posts.length})`}
       </h1>
       <motion.div variants={stagger}>{displayedPosts}</motion.div>

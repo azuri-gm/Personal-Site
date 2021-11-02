@@ -13,13 +13,13 @@ const BlogCard = ({
   return (
     <div className='flex flex-col'>
       <div className='mb-8'>
-        <p className='text-sm mb-5 text-coral-blue'>
+        <p className='mb-5 text-sm text-coral-blue'>
           {format(new Date(createdAt), 'LLLL dd, yyyy')}
         </p>
-        <h3 className='sm:text-2xl text-lg font-bold mb-3'>{title}</h3>
-        <p className='mb-10 sm:text-left text-justify'>{excerpt}</p>
+        <h3 className='mb-3 text-lg font-bold sm:text-2xl'>{title}</h3>
+        <p className='mb-10 text-justify sm:text-left'>{excerpt}</p>
         <Link href={`blog/${slug}`}>
-          <a className='p-2 text-coral-blue text-sm transition duration-700 ease-in-out hover:bg-filler-blue rounded'>
+          <a className='p-2 text-sm transition duration-700 ease-in-out rounded text-coral-blue hover:bg-filler-blue'>
             Read more...
           </a>
         </Link>

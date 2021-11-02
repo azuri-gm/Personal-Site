@@ -88,10 +88,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <meta name='msapplication-TileColor' content='#ffffff' />
         <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
       </Head>
-      {/* flex-grow max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full */}
       <AnimatePresence exitBeforeEnter>
         <div className='flex flex-col min-h-screen bg-darker-blue text-custom-grey font-jost'>
-          <div className='flex-grow max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full'>
+          <div className='flex-grow w-full max-w-3xl px-4 mx-auto sm:px-6 lg:max-w-5xl'>
             <div className=''>
               <NavBar />
               <motion.main
@@ -105,7 +104,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
               </motion.main>
             </div>
           </div>
-          <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full'>
+          <div className='w-full max-w-3xl px-4 mx-auto sm:px-6 lg:max-w-5xl'>
             <Footer />
           </div>
         </div>

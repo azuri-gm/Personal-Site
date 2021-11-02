@@ -57,7 +57,7 @@ const NavLink = ({
 
 const NavBar = () => {
   return (
-    <div className='flex sm:flex-row flex-col justify-between items-center mb-4 p-4'>
+    <div className='flex flex-col items-center justify-between p-4 mb-4 sm:flex-row'>
       <Link href='/' passHref>
         <a>
           <div className='flex mb-2 sm:mb-0'>
@@ -71,13 +71,13 @@ const NavBar = () => {
           {links.map(({ name, path }, index) => (
             <li
               key={index}
-              className='p-2 transition duration-700 ease-in-out hover:bg-filler-blue rounded'
+              className='p-2 transition duration-700 ease-in-out rounded hover:bg-filler-blue'
             >
               <NavLink
                 to={path}
                 activeClassName='bg-filler-blue text-custom-grey p-2 rounded'
                 inactiveClassName='text-custom-grey p-2'
-                className='inline-flex items-center p-2 border-b-2 border-transparent text-sm font-medium leading-5 transition-all ease-in-out rounded'
+                className='inline-flex items-center p-2 text-sm font-medium leading-5 transition-all ease-in-out border-b-2 border-transparent rounded'
               >
                 {name}
               </NavLink>

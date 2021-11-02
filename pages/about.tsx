@@ -17,7 +17,7 @@ const About: NextPage = () => {
 
   return (
     <Layout>
-      <div className='prose prose-sm sm:prose-lg max-w-none'>
+      <div className='prose-sm prose sm:prose-lg max-w-none'>
         <Head>
           <title>About Page</title>
           <meta name='description' content='About Page personal description' />
@@ -37,7 +37,7 @@ const About: NextPage = () => {
             </a>
           </p>
         </div>
-        <div className='overflow-y-hidden h-full'>
+        <div className='h-full overflow-y-hidden'>
           <InlineWidget
             url={calendlyUrl}
             pageSettings={{ backgroundColor: 'ECF8FF', textColor: '#fff' }}

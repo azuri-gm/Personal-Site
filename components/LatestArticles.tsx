@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 import ChevronRight from './icons/ChevronRight';
+import ReactIcon from './icons/ReactIcon';
 import VSCodeIcon from './icons/VSCodeIcon';
 
 const LatestArticles = ({ posts }: PostCollection): ReactElement => {
@@ -25,7 +26,12 @@ const LatestArticles = ({ posts }: PostCollection): ReactElement => {
             <a>
               <div className='mb-7 flex items-start'>
                 <div>
-                  <VSCodeIcon />
+                  {console.log(title.toLowerCase())}
+                  {title.toLowerCase().includes('vs code') ? (
+                    <VSCodeIcon />
+                  ) : (
+                    <ReactIcon />
+                  )}
                 </div>
                 <div className='flex flex-col'>
                   <p className='text-lg font-medium'>{title}</p>

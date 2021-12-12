@@ -17,7 +17,7 @@ const About: NextPage = () => {
 
   return (
     <Layout>
-      <div className='prose prose-sm sm:prose-lg max-w-none'>
+      <div className='prose-sm prose sm:prose-lg max-w-none'>
         <Head>
           <title>About Page</title>
           <meta name='description' content='About Page personal description' />
@@ -26,18 +26,27 @@ const About: NextPage = () => {
           <h1>About</h1>
           <p>
             Eduardo Gaytan is a Senior Software Engineer at{' '}
-            <a href='https://www.apptegy.com/'>Apptegy</a>. He is a full stack
-            engineer with a focus on the front end, enjoying building
-            well-designed, fast and robust web apps. He is passionate about
-            creating products that help to empower people with new skills and
-            knowledge regardless of their background and prior training. You can
-            read more on his{' '}
-            <a target='_blank' href='/resume.pdf'>
+            <a
+              href='https://www.apptegy.com/'
+              className='underline decoration-bright-lime decoration-dotted'
+            >
+              Apptegy
+            </a>
+            . He is a full stack engineer with a focus on the front end,
+            enjoying building well-designed, fast and robust web apps. He is
+            passionate about creating products that help to empower people with
+            new skills and knowledge regardless of their background and prior
+            training. You can read more on his{' '}
+            <a
+              target='_blank'
+              href='/resume.pdf'
+              className='underline decoration-bright-lime decoration-dotted'
+            >
               CV
             </a>
           </p>
         </div>
-        <div className='overflow-y-hidden h-full'>
+        <div className='h-full overflow-y-hidden'>
           <InlineWidget
             url={calendlyUrl}
             pageSettings={{ backgroundColor: 'ECF8FF', textColor: '#fff' }}

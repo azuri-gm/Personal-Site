@@ -2,16 +2,16 @@ import Link from 'next/link';
 
 const CTA = () => {
   return (
-    <div className='mt-10 w-screen absolute left-0 bg-background-blue text-center p-16'>
+    <div className='absolute left-0 w-screen p-16 mt-10 text-center bg-background-blue'>
       <div className='justify-center'>
-        <h1 className='text-custom-green sm:text-5xl text-3xl mb-5'>
+        <h1 className='mb-5 text-3xl text-custom-green sm:text-5xl'>
           What are you working on?
         </h1>
         <p>
           Let us have a conversation! I would love to hear about what you are
           working on and find a way to work together
         </p>
-        <button className='rounded p-2 bg-bright-lime mt-4 text-darker-blue text-base font-bold'>
+        <button className='p-2 mt-4 text-base font-bold rounded bg-bright-lime text-darker-blue shadow-bright-lime'>
           <Link href='/about#contact' passHref>
             <div className='flex items-center gap-x-1'>
               <svg

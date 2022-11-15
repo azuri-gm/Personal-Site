@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Heart from './icons/Heart';
 
 type Link = {
@@ -39,18 +39,17 @@ const NavLink = ({
   const router = useRouter();
   const isActive = router.pathname === to;
   return (
-    <Link href={to}>
-      <a
-        className={
-          isActive
-            ? activeClassName
-            : inactiveClassName
-            ? inactiveClassName
-            : className
-        }
-      >
-        {children}
-      </a>
+    <Link
+      href={to}
+      className={
+        isActive
+          ? activeClassName
+          : inactiveClassName
+          ? inactiveClassName
+          : className
+      }
+    >
+      {children}
     </Link>
   );
 };
@@ -59,12 +58,10 @@ const NavBar = () => {
   return (
     <div className='flex sm:flex-row flex-col justify-between items-center mb-4 p-4'>
       <Link href='/' passHref>
-        <a>
-          <div className='flex mb-2 sm:mb-0'>
-            <Heart />
-            <p>Azuri Gaytan</p>
-          </div>
-        </a>
+        <div className='flex mb-2 sm:mb-0'>
+          <Heart />
+          <p>Azuri Gaytan</p>
+        </div>
       </Link>
       <nav>
         <ul className='flex gap-x-2'>

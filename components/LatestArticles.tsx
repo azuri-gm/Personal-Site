@@ -23,24 +23,22 @@ const LatestArticles = ({ posts }: PostCollection): ReactElement => {
       <div>
         {posts.map(({ createdAt, slug, title }) => (
           <Link href={`/blog/${slug}`} key={slug}>
-            <a>
-              <div className='mb-7 flex items-start'>
-                <div>
-                  {console.log(title.toLowerCase())}
-                  {title.toLowerCase().includes('vs code') ? (
-                    <VSCodeIcon />
-                  ) : (
-                    <ReactIcon />
-                  )}
-                </div>
-                <div className='flex flex-col'>
-                  <p className='text-lg font-medium'>{title}</p>
-                  <p className='text-xs text-shade-blue'>
-                    {format(new Date(createdAt), 'LLLL dd, yyyy')}
-                  </p>
-                </div>
+            <div className='mb-7 flex items-start'>
+              <div>
+                {console.log(title.toLowerCase())}
+                {title.toLowerCase().includes('vs code') ? (
+                  <VSCodeIcon />
+                ) : (
+                  <ReactIcon />
+                )}
               </div>
-            </a>
+              <div className='flex flex-col'>
+                <p className='text-lg font-medium'>{title}</p>
+                <p className='text-xs text-shade-blue'>
+                  {format(new Date(createdAt), 'LLLL dd, yyyy')}
+                </p>
+              </div>
+            </div>
           </Link>
         ))}
       </div>

@@ -1,20 +1,13 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {
-      height: {
-        '10v': '10vh',
-        '20v': '20vh',
-        '30v': '30vh',
-        '40v': '40vh',
-        '50v': '50vh',
-        '60v': '60vh',
-        '70v': '70vh',
-        '80v': '80vh',
-        '90v': '90vh',
-        '100v': '100vh',
-      },
       colors: {
         'dark-blue': '#1c2b35',
         'light-blue': '#1C2B35',
@@ -30,9 +23,6 @@ module.exports = {
       dropShadow: {
         '3xl': '0px 0px 76px rgba(188, 251, 195, 0.3)',
       },
-      fontFamily: {
-        jost: ['Jost'],
-      },
       textShadow: {
         custom: '0px 0px 76px rgba(188, 251, 195, 0.3)',
       },
@@ -40,7 +30,6 @@ module.exports = {
         DEFAULT: {
           css: {
             color: '#ECF8FF',
-            fontFamily: 'Jost',
             h1: {
               color: '#ECF8FF',
             },
@@ -73,11 +62,9 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [
     require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
     require('tailwindcss-textshadow'),
   ],
-};
+}

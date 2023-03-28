@@ -1,92 +1,43 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { ReactNode } from 'react';
-import Heart from './icons/Heart';
+'use client'
 
-type Link = {
-  name: string;
-  path: string;
-};
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { FC } from 'react'
 
-const links: Link[] = [
-  {
-    name: 'Home',
-    path: '/',
-  },
-  {
-    name: 'Blog',
-    path: '/blog',
-  },
-  {
-    name: 'About',
-    path: '/about',
-  },
-];
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+]
 
-const NavLink = ({
-  to,
-  className,
-  activeClassName,
-  inactiveClassName,
-  children,
-}: {
-  to: string;
-  className: string;
-  activeClassName: string;
-  inactiveClassName: string;
-  children: ReactNode;
-}) => {
-  const router = useRouter();
-  const isActive = router.pathname === to;
+export const Navbar: FC = () => {
+  const path = usePathname().split('/')[1] || 'home'
+
   return (
-    <Link href={to}>
-      <a
-        className={
-          isActive
-            ? activeClassName
-            : inactiveClassName
-            ? inactiveClassName
-            : className
-        }
-      >
-        {children}
-      </a>
-    </Link>
-  );
-};
-
-const NavBar = () => {
-  return (
-    <div className='flex sm:flex-row flex-col justify-between items-center mb-4 p-4'>
-      <Link href='/' passHref>
-        <a>
-          <div className='flex mb-2 sm:mb-0'>
-            <Heart />
-            <p>Azuri Gaytan</p>
-          </div>
-        </a>
-      </Link>
-      <nav>
-        <ul className='flex gap-x-2'>
-          {links.map(({ name, path }, index) => (
-            <li
-              key={index}
-              className='p-2 transition duration-700 ease-in-out hover:bg-filler-blue rounded'
-            >
-              <NavLink
-                to={path}
-                activeClassName='bg-filler-blue text-custom-grey p-2 rounded'
-                inactiveClassName='text-custom-grey p-2'
-                className='inline-flex items-center p-2 border-b-2 border-transparent text-sm font-medium leading-5 transition-all ease-in-out rounded'
-              >
-                {name}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
-  );
-};
-
-export default NavBar;
+    <header className='relative z-10 w-full p-4'>
+      <div className='flex items-center justify-between py-8'>
+        <Link href='/' className='text-xl font-bold'>
+          Eduardo Gaytan
+        </Link>
+        <nav>
+          <ul className='[&_li]:ml-4 ml-12 flex'>
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link className='relative' href={link.href}>
+                  {link.label.toLowerCase() === path && (
+                    <motion.span
+                      layoutId='underline'
+                      className='absolute left-0 top-full block h-[2px] w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'
+                    />
+                  )}
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+  )
+}
